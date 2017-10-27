@@ -71,7 +71,7 @@ const constructCarts =
   listings =>
     customers => {
       return customers.map((c) => ({name: c.name, list: entries(c.shoppingList).map( (i) => ({itemName: i[0], count: i[1]}))}))
-                  .map( (element) => cart(element.name, element.list.map((itm) => itemRepeater(itm.itemName)(itm.count))))
+                  .map( (element) => cart(element.name, ...element.list.map((itm) => itemRepeater(itm.itemName)(itm.count))))
     }
 
   
