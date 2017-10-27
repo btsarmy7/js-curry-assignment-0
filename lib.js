@@ -58,9 +58,9 @@ const itemRepeater =
         let i = 1
         let array = []
         while (i++ <= count){
-        array.push(({name:itemName, price: itemPrice(listings, itemName)}))      
-        }
-      return array    
+        array.push(listing(itemName, itemPrice(listings, itemName)))      
+        //return listing(itemName, itemPrice(listings, itemName))}
+        }return array    
     }
    
 /**
@@ -71,7 +71,7 @@ const constructCarts =
   listings =>
     customers => {
       return customers.map((c) => ({name: c.name, list: entries(c.shoppingList).map( (i) => ({itemName: i[0], count: i[1]}))}))
-                  .map( (element) => ({name: element.name, cart: element.list.map((itm) => itemRepeater(itm.itemName)(itm.count))}) )
+                  .map( (element) => cart(element.name, element.list.map((itm) => itemRepeater(itm.itemName)(itm.count))))
     }
 
   
